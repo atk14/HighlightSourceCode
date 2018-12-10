@@ -67,5 +67,5 @@ function smarty_block_highlight_source_code($params,$content,$template,&$repeat)
 	$geshi->enable_keyword_links(false);
 	$geshi->set_overall_style("");
 	$geshi->enable_classes(false);
-  return $geshi->parse_code();
+	return $geshi->parse_code();
 }
