@@ -19,6 +19,11 @@ function smarty_block_highlight_source_code($params,$content,$template,&$repeat)
 	$params += array(
 		"lang" => "auto",
 		"normalize_content" => true,
+		"enable_keyword_links" => false,
+		"enable_classes" => false,
+		"overal_style" => "",
+		"overal_class" => "",
+		"overal_id" => "",
 	);
 
 	if($params["normalize_content"]){
@@ -64,8 +69,10 @@ function smarty_block_highlight_source_code($params,$content,$template,&$repeat)
 	}
 
 	$geshi = new GeSHi($content,$lang);
-	$geshi->enable_keyword_links(false);
-	$geshi->set_overall_style("");
-	$geshi->enable_classes(false);
-  return $geshi->parse_code();
+	$geshi->enable_keyword_links(!!$params["enable_keyword_links"]);
+	$geshi->set_overall_style($params["overal_style"]);
+	$geshi->set_overall_class($params["overal_class"]);
+	$geshi->set_overall_id($params["overal_id"]);
+	$geshi->enable_classes(!!$params["enable_classes"]);
+	return $geshi->parse_code();
 }
