@@ -31,7 +31,7 @@ function smarty_block_highlight_source_code($params,$content,$template,&$repeat)
 		// Cuts off common amount of spaces on each line.
 		$got_content = false;
 		$min_spaces_at_the_begining = 9999;
-		$lines = [];
+		$lines = array();
 		foreach(explode("\n",$content) as $line){
 			if(!$got_content && trim($line)==""){ continue; }
 			$got_content = true;
