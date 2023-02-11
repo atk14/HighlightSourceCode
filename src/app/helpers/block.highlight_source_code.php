@@ -16,6 +16,8 @@
 function smarty_block_highlight_source_code($params,$content,$template,&$repeat){
 	if($repeat){ return; }
 
+	$content = (string)$content;
+
 	$params += array(
 		"lang" => "auto",
 		"normalize_content" => true,
